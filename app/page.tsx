@@ -6,6 +6,28 @@ import {
   School, Send, Image as ImageIcon, BookOpen, ShieldCheck
 } from "lucide-react";
 
+interface CommentItem {
+  author: string;
+  text: string;
+}
+
+interface PostItem {
+  id: number;
+  category?: string;
+  title: string;
+  text: string;
+  image: string;
+  date: string;
+  comments: CommentItem[];
+}
+
+interface FeedbackItem {
+  id: number;
+  author: string;
+  text: string;
+  date: string;
+}
+
 export default function Home() {
   const [activeTab, setActiveTab] = useState("news");
   const [role, setRole] = useState<"guest" | "teacher" | "leader">("guest");
@@ -13,7 +35,7 @@ export default function Home() {
   const [showLoginModal, setShowLoginModal] = useState(false);
 
   // --- States for dynamic data ---
-  const [posts, setPosts] = useState([
+  const [posts, setPosts] = useState<PostItem[]>([
     {
       id: 1,
       category: "news",
@@ -25,7 +47,7 @@ export default function Home() {
     }
   ]);
 
-  const [achievements, setAchievements] = useState([
+  const [achievements, setAchievements] = useState<PostItem[]>([
     {
       id: 1,
       title: "Волейболын тэмцээний Аварга",
@@ -36,7 +58,7 @@ export default function Home() {
     }
   ]);
 
-  const [reports, setReports] = useState([
+  const [reports, setReports] = useState<PostItem[]>([
     {
       id: 1,
       title: "1-р улирлын сурлагын тайлан",
@@ -47,13 +69,13 @@ export default function Home() {
     }
   ]);
 
-  const [rules, setRules] = useState([
+  const [rules, setRules] = useState<string[]>([
     "Хичээлээс хоцрохгүй, цагтаа ирэх",
     "Бусдыгаа хүндэтгэж, сургуулийн дүрмийг баримтлах",
     "Цэвэрч орон зайг бүрдүүлэх"
   ]);
 
-  const [schedule, setSchedule] = useState({
+  const [schedule, setSchedule] = useState<Record<string, string>>({
     "Даваа": "Математик, Физик, Монгол хэл, Англи хэл, Биологи",
     "Мягмар": "Хими, Түүх, Нийгэм, Биеийн тамир, Геометр",
     "Лхагва": "Англи хэл, Математик, Мэдээлэл зүй, Уран зохиол",
@@ -61,7 +83,7 @@ export default function Home() {
     "Баасан": "Монгол хэл, Математик, Арга зүй, Спортын секц"
   });
 
-  const [duty, setDuty] = useState({
+  const [duty, setDuty] = useState<Record<string, string>>({
     "Даваа": "Болд, Сүрэн",
     "Мягмар": "Ананд, Номин",
     "Лхагва": "Бат, Туяа",
@@ -69,7 +91,7 @@ export default function Home() {
     "Баасан": "Тэмүүлэн, Хулан"
   });
 
-  const [feedbacks, setFeedbacks] = useState([
+  const [feedbacks, setFeedbacks] = useState<FeedbackItem[]>([
     { id: 1, author: "Сурагч", text: "Аялалын цагийг наашлуулах боломжтой юу?", date: "2026-09-07" }
   ]);
 
@@ -77,7 +99,7 @@ export default function Home() {
   const [newPostTitle, setNewPostTitle] = useState("");
   const [newPostText, setNewPostText] = useState("");
   const [newPostImg, setNewPostImg] = useState("");
-  const [commentInput, setCommentInput] = useState<{ [key: string]: string }>({});
+  const [commentInput, setCommentInput] = useState<{ [key: number]: string }>({});
   const [newRule, setNewRule] = useState("");
   const [feedbackInput, setFeedbackInput] = useState("");
 
@@ -97,7 +119,11 @@ export default function Home() {
   };
 
   // Generic comment adder
-  const addComment = (list: any[], setList: Function, postId: number) => {
+  const addComment = (
+    list: PostItem[],
+    setList: React.Dispatch<React.SetStateAction<PostItem[]>>,
+    postId: number
+  ) => {
     const text = commentInput[postId];
     if (!text) return;
     setList(list.map(p => p.id === postId ? {
