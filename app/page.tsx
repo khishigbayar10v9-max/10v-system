@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import {
   Users, Calendar, CheckSquare, Trophy, FileText,
   MessageSquare, Lock, LogOut, Plus, Star, Sparkles,
-  School, Send, ImageIcon, BookOpen, ShieldCheck,
-  Moon, Heart, Download, Upload, Trash2, Smile
+  School, Send, Upload, Trash2, BookOpen, ShieldCheck,
+  Moon, Heart, Download, Smile
 } from "lucide-react";
 
 interface CommentItem {
@@ -35,7 +35,7 @@ export default function Home() {
   const [pinInput, setPinInput] = useState("");
   const [showLoginModal, setShowLoginModal] = useState(false);
 
-  // --- States for dynamic data ---
+  // --- Dynamic Data States ---
   const [posts, setPosts] = useState<PostItem[]>([
     {
       id: 1,
@@ -118,7 +118,7 @@ export default function Home() {
     }
   };
 
-  // Export Feedback data to Excel / CSV format with Mongolian character support
+  // Export Feedback to Excel / CSV
   const exportToExcel = () => {
     if (feedbacks.length === 0) {
       alert("Татах санал хүсэлт одоогоор байхгүй байна! ❤️");
@@ -155,6 +155,13 @@ export default function Home() {
     }
   };
 
+  // Delete helpers
+  const deletePost = (id: number) => setPosts(posts.filter(p => p.id !== id));
+  const deleteAchievement = (id: number) => setAchievements(achievements.filter(a => a.id !== id));
+  const deleteReport = (id: number) => setReports(reports.filter(r => r.id !== id));
+  const deleteFeedback = (id: number) => setFeedbacks(feedbacks.filter(f => f.id !== id));
+  const deleteRule = (index: number) => setRules(rules.filter((_, i) => i !== index));
+
   const addComment = (
     list: PostItem[],
     setList: React.Dispatch<React.SetStateAction<PostItem[]>>,
@@ -172,21 +179,21 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-slate-900 text-slate-100 font-sans relative overflow-x-hidden">
       
-      {/* Dynamic Animated Background (Stars, Moon, Books, Hearts) */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-30">
-        <Moon className="absolute top-10 left-10 w-16 h-16 text-yellow-200 animate-pulse" />
-        <Star className="absolute top-24 right-20 w-8 h-8 text-yellow-300 animate-bounce" />
-        <Star className="absolute top-1/3 left-1/4 w-6 h-6 text-pink-300 animate-ping" />
+      {/* Animated Floating Background Elements */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-40">
+        <Moon className="absolute top-10 left-10 w-16 h-16 text-yellow-300 animate-pulse" />
+        <Star className="absolute top-20 right-20 w-8 h-8 text-yellow-200 animate-bounce" />
+        <Star className="absolute top-1/3 left-1/4 w-7 h-7 text-pink-400 animate-ping" />
         <Heart className="absolute top-1/2 right-12 w-10 h-10 text-rose-400 animate-pulse" />
-        <BookOpen className="absolute bottom-20 left-16 w-12 h-12 text-indigo-300 animate-bounce" />
+        <BookOpen className="absolute bottom-20 left-12 w-12 h-12 text-indigo-400 animate-bounce" />
         <Sparkles className="absolute bottom-1/3 right-1/4 w-10 h-10 text-amber-300 animate-pulse" />
         <Star className="absolute bottom-10 right-10 w-8 h-8 text-cyan-300 animate-spin" />
+        <Heart className="absolute top-1/4 left-10 w-8 h-8 text-purple-400 animate-bounce" />
       </div>
 
-      {/* Main Container */}
       <div className="relative z-10">
 
-        {/* Colorful Header Banner */}
+        {/* Header Banner */}
         <header className="bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 text-white shadow-2xl border-b border-white/10">
           <div className="max-w-6xl mx-auto px-4 py-8">
             <div className="flex flex-col md:flex-row justify-between items-center gap-6">
@@ -203,13 +210,13 @@ export default function Home() {
                   <h1 className="text-2xl md:text-4xl font-extrabold tracking-wide drop-shadow-md">
                     Хөвсгөл аймаг • Эрдмийн далай сургууль
                   </h1>
-                  <p className="text-pink-100 text-sm mt-1 font-semibold flex items-center gap-2">
+                  <p className="text-pink-100 text-sm mt-1 font-semibold flex flex-wrap items-center gap-2">
                     <span>🎒 10В Анги</span> • <span>👑 Багш: С.Хишигбаяр</span> • <span>⭐ Ахлагч: О.Мандахнаран (37 сурагч)</span>
                   </p>
                 </div>
               </div>
 
-              {/* Login Button */}
+              {/* Login/Role Status */}
               <div>
                 {role === "guest" ? (
                   <button
@@ -240,9 +247,9 @@ export default function Home() {
           </div>
         </header>
 
-        {/* Colorful Interactive Navigation Tabs */}
-        <nav className="bg-slate-800/80 backdrop-blur-lg border-b border-slate-700 sticky top-0 z-20 shadow-md">
-          <div className="max-w-6xl mx-auto px-4 flex space-x-2 overflow-x-auto py-3 scrollbar-none">
+        {/* Fully Visible Responsive Navigation Bar */}
+        <nav className="bg-slate-800/90 backdrop-blur-lg border-b border-slate-700 sticky top-0 z-20 shadow-xl py-3">
+          <div className="max-w-6xl mx-auto px-2 flex flex-wrap items-center justify-center gap-2">
             {[
               { id: "news", label: "Мэдээлэл ❤️", icon: FileText, color: "from-blue-500 to-indigo-600" },
               { id: "rules", label: "Ангийн дүрэм 📚", icon: BookOpen, color: "from-emerald-500 to-teal-600" },
@@ -258,10 +265,10 @@ export default function Home() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center space-x-2 px-5 py-2.5 rounded-2xl font-bold text-sm whitespace-nowrap transition-all duration-300 transform hover:scale-105 ${
+                  className={`flex items-center space-x-1.5 px-4 py-2.5 rounded-2xl font-extrabold text-sm transition-all duration-300 transform hover:scale-105 ${
                     active
-                      ? `bg-gradient-to-r ${tab.color} text-white shadow-lg ring-2 ring-white/40`
-                      : "bg-slate-700/50 text-slate-300 hover:bg-slate-700 hover:text-white"
+                      ? `bg-gradient-to-r ${tab.color} text-white shadow-lg ring-2 ring-white/50 scale-105`
+                      : "bg-slate-700/60 text-slate-300 hover:bg-slate-700 hover:text-white"
                   }`}
                 >
                   <Icon className="w-4 h-4" />
@@ -297,7 +304,6 @@ export default function Home() {
                     className="w-full p-3 bg-slate-900 border border-slate-700 rounded-2xl text-white outline-none focus:border-blue-500 h-24"
                   />
                   
-                  {/* Local Image Upload Option */}
                   <div className="flex items-center gap-4">
                     <label className="flex items-center gap-2 bg-slate-700 hover:bg-slate-600 text-white font-bold px-4 py-2.5 rounded-2xl cursor-pointer transition">
                       <Upload className="w-4 h-4 text-blue-400" />
@@ -332,7 +338,16 @@ export default function Home() {
               )}
 
               {posts.map((post) => (
-                <div key={post.id} className="bg-slate-800/80 backdrop-blur-md rounded-3xl shadow-xl border border-slate-700 overflow-hidden transform hover:-translate-y-1 transition duration-300">
+                <div key={post.id} className="bg-slate-800/80 backdrop-blur-md rounded-3xl shadow-xl border border-slate-700 overflow-hidden relative">
+                  {role === "teacher" && (
+                    <button
+                      onClick={() => deletePost(post.id)}
+                      className="absolute top-4 right-4 bg-red-600/80 hover:bg-red-600 text-white p-2.5 rounded-2xl backdrop-blur-md transition shadow-lg z-10"
+                      title="Устгах"
+                    >
+                      <Trash2 className="w-5 h-5" />
+                    </button>
+                  )}
                   {post.image && (
                     <img src={post.image} alt="" className="w-full h-72 object-cover" />
                   )}
@@ -343,7 +358,6 @@ export default function Home() {
                     <h3 className="font-extrabold text-2xl mb-3 text-white">{post.title}</h3>
                     <p className="text-slate-300 mb-6 leading-relaxed text-base">{post.text}</p>
 
-                    {/* Comments */}
                     <div className="border-t border-slate-700/60 pt-4 bg-slate-900/60 -mx-6 -mb-6 p-6 space-y-4">
                       <h4 className="font-bold text-sm text-pink-400 flex items-center gap-1">
                         <Smile className="w-4 h-4" /> Сэтгэгдэл, санал бодол:
@@ -408,11 +422,22 @@ export default function Home() {
 
               <div className="grid gap-4">
                 {rules.map((rule, idx) => (
-                  <div key={idx} className="flex items-center space-x-4 p-4 bg-slate-900/80 rounded-2xl border border-slate-700/80 hover:border-emerald-500/50 transition">
-                    <span className="w-9 h-9 bg-emerald-500/20 text-emerald-300 font-extrabold rounded-xl flex items-center justify-center text-base border border-emerald-500/30">
-                      {idx + 1}
-                    </span>
-                    <span className="font-bold text-slate-200 text-base">{rule}</span>
+                  <div key={idx} className="flex items-center justify-between p-4 bg-slate-900/80 rounded-2xl border border-slate-700/80">
+                    <div className="flex items-center space-x-4">
+                      <span className="w-9 h-9 bg-emerald-500/20 text-emerald-300 font-extrabold rounded-xl flex items-center justify-center text-base border border-emerald-500/30">
+                        {idx + 1}
+                      </span>
+                      <span className="font-bold text-slate-200 text-base">{rule}</span>
+                    </div>
+                    {(role === "teacher" || role === "leader") && (
+                      <button
+                        onClick={() => deleteRule(idx)}
+                        className="text-red-400 hover:text-red-300 p-2 transition"
+                        title="Устгах"
+                      >
+                        <Trash2 className="w-5 h-5" />
+                      </button>
+                    )}
                   </div>
                 ))}
               </div>
@@ -524,7 +549,16 @@ export default function Home() {
               )}
 
               {achievements.map((item) => (
-                <div key={item.id} className="bg-slate-800/80 backdrop-blur-md rounded-3xl shadow-xl border border-slate-700 overflow-hidden">
+                <div key={item.id} className="bg-slate-800/80 backdrop-blur-md rounded-3xl shadow-xl border border-slate-700 overflow-hidden relative">
+                  {role === "teacher" && (
+                    <button
+                      onClick={() => deleteAchievement(item.id)}
+                      className="absolute top-4 right-4 bg-red-600/80 hover:bg-red-600 text-white p-2.5 rounded-2xl backdrop-blur-md transition shadow-lg z-10"
+                      title="Устгах"
+                    >
+                      <Trash2 className="w-5 h-5" />
+                    </button>
+                  )}
                   {item.image && <img src={item.image} alt="" className="w-full h-72 object-cover" />}
                   <div className="p-6">
                     <div className="text-xs text-amber-400 font-bold mb-1">{item.date}</div>
@@ -561,7 +595,7 @@ export default function Home() {
             </div>
           )}
 
-          {/* TAB 6: ТАЙЛАН */}
+          {/* TAB 6: ТАЙЛАН МЭДЭЭ */}
           {activeTab === "reports" && (
             <div className="space-y-6">
               {role === "teacher" && (
@@ -614,7 +648,16 @@ export default function Home() {
               )}
 
               {reports.map((item) => (
-                <div key={item.id} className="bg-slate-800/80 backdrop-blur-md rounded-3xl shadow-xl border border-slate-700 overflow-hidden">
+                <div key={item.id} className="bg-slate-800/80 backdrop-blur-md rounded-3xl shadow-xl border border-slate-700 overflow-hidden relative">
+                  {role === "teacher" && (
+                    <button
+                      onClick={() => deleteReport(item.id)}
+                      className="absolute top-4 right-4 bg-red-600/80 hover:bg-red-600 text-white p-2.5 rounded-2xl backdrop-blur-md transition shadow-lg z-10"
+                      title="Устгах"
+                    >
+                      <Trash2 className="w-5 h-5" />
+                    </button>
+                  )}
                   {item.image && <img src={item.image} alt="" className="w-full h-72 object-cover" />}
                   <div className="p-6">
                     <div className="text-xs text-rose-400 font-bold mb-1">{item.date}</div>
@@ -651,7 +694,7 @@ export default function Home() {
             </div>
           )}
 
-          {/* TAB 7: САНАЛ ХҮСЭЛТ БА ЭКСЕЛ ТАТАХ */}
+          {/* TAB 7: САНАЛ ХҮСЭЛТ МЭДЭЭЛЭЛ (ЭКСЕЛ ТАТАХ & УСТГАХ ЭРХТЭЙ) */}
           {activeTab === "feedback" && (
             <div className="bg-slate-800/90 backdrop-blur-md p-8 rounded-3xl shadow-xl border border-cyan-500/30 space-y-6">
               
@@ -660,7 +703,7 @@ export default function Home() {
                   <MessageSquare className="w-7 h-7" /> Санал Хүсэлтийн Цонх 💬
                 </h3>
 
-                {/* Excel Download Button */}
+                {/* Excel Download Button (Багшид болон бүх хэрэглэгчид нээлттэй) */}
                 <button
                   onClick={exportToExcel}
                   className="flex items-center space-x-2 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-extrabold px-5 py-3 rounded-2xl shadow-lg hover:opacity-95 transition transform hover:scale-105"
@@ -701,12 +744,24 @@ export default function Home() {
               <div className="space-y-4 pt-4 border-t border-slate-700">
                 <h4 className="font-bold text-slate-400 text-sm">Ирүүлсэн бүх санал хүсэлтүүд:</h4>
                 {feedbacks.map((f) => (
-                  <div key={f.id} className="p-4 bg-slate-900/80 rounded-2xl border border-slate-700/80">
-                    <div className="flex justify-between text-xs mb-1">
-                      <span className="font-extrabold text-cyan-300">{f.author}</span>
-                      <span className="text-slate-400">{f.date}</span>
+                  <div key={f.id} className="p-4 bg-slate-900/80 rounded-2xl border border-slate-700/80 flex items-center justify-between">
+                    <div>
+                      <div className="flex items-center gap-3 text-xs mb-1">
+                        <span className="font-extrabold text-cyan-300">{f.author}</span>
+                        <span className="text-slate-400">{f.date}</span>
+                      </div>
+                      <p className="text-slate-200 font-medium text-base">{f.text}</p>
                     </div>
-                    <p className="text-slate-200 font-medium text-base">{f.text}</p>
+
+                    {role === "teacher" && (
+                      <button
+                        onClick={() => deleteFeedback(f.id)}
+                        className="text-red-400 hover:text-red-300 p-2 transition"
+                        title="Устгах"
+                      >
+                        <Trash2 className="w-5 h-5" />
+                      </button>
+                    )}
                   </div>
                 ))}
               </div>
