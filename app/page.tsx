@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import {
   Users, Calendar, CheckSquare, Trophy, FileText,
   MessageSquare, Lock, LogOut, Plus, Star, Sparkles,
-  School, Send, Image as ImageIcon, BookOpen, ShieldCheck
+  School, Send, ImageIcon, BookOpen, ShieldCheck,
+  Moon, Heart, Download, Upload, Trash2, Smile
 } from "lucide-react";
 
 interface CommentItem {
@@ -39,19 +40,19 @@ export default function Home() {
     {
       id: 1,
       category: "news",
-      title: "Эцэг эхийн хурал зарлагдлаа",
-      text: "Ирэх баасан гарагийн 18:00 цагаас 10В ангийн эцэг эхийн хуралтай тул идэвхтэй хамрагдана уу.",
+      title: " Эцэг эхийн нэгдсэн хурал зарлагдлаа",
+      text: "Ирэх баасан гарагийн 18:00 цагаас 10В ангийн эцэг эхийн хуралтай тул идэвхтэй хамрагдана уу. ❤️",
       image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=800",
       date: "2026-09-07",
-      comments: [{ author: "Сурагчийн аав", text: "Онлайн хэлбэрээр орох боломжтой юу?" }]
+      comments: [{ author: "Сурагчийн аав", text: "Онлайн хэлбэрээр орох боломжтой юу? ✨" }]
     }
   ]);
 
   const [achievements, setAchievements] = useState<PostItem[]>([
     {
       id: 1,
-      title: "Волейболын тэмцээний Аварга",
-      text: "Сургуулийн аварга шалгаруулах тэмцээнээс 10В ангийн баг 1-р байр эзэллээ!",
+      title: " Волейболын тэмцээний Аварга",
+      text: "Сургуулийн аварга шалгаруулах тэмцээнээс 10В ангийн баг тамирчид 1-р байр эзэлж шилжин явдах цом хүртлээ! 🏆🎉",
       image: "https://images.unsplash.com/photo-1519766304817-4f37bda74a29?w=800",
       date: "2026-09-05",
       comments: []
@@ -61,8 +62,8 @@ export default function Home() {
   const [reports, setReports] = useState<PostItem[]>([
     {
       id: 1,
-      title: "1-р улирлын сурлагын тайлан",
-      text: "Ангийн нийт сурагчдын чанар 85%-ийн амжилттайтай гарлаа.",
+      title: " 1-р улирлын сурлагын тайлан мэдээ",
+      text: "Ангийн нийт сурагчдын чанар 85%-ийн амжилттай гарлаа. 💖",
       image: "",
       date: "2026-09-01",
       comments: []
@@ -70,38 +71,74 @@ export default function Home() {
   ]);
 
   const [rules, setRules] = useState<string[]>([
-    "Хичээлээс хоцрохгүй, цагтаа ирэх",
-    "Бусдыгаа хүндэтгэж, сургуулийн дүрмийг баримтлах",
-    "Цэвэрч орон зайг бүрдүүлэх"
+    "Хичээлээс хоцрохгүй, цагтаа ирэх ⏰",
+    "Бусдыгаа хүндэтгэж, сургуулийн дүрмийг баримтлах 🤝",
+    "Анги хамт олноороо цэвэрч орон зайг бүрдүүлэх 🧹",
+    "Нэг нэгэндээ тусалж, эерэг уур амьсгал бүтээх ❤️"
   ]);
 
   const [schedule, setSchedule] = useState<Record<string, string>>({
-    "Даваа": "Математик, Физик, Монгол хэл, Англи хэл, Биологи",
-    "Мягмар": "Хими, Түүх, Нийгэм, Биеийн тамир, Геометр",
-    "Лхагва": "Англи хэл, Математик, Мэдээлэл зүй, Уран зохиол",
-    "Пүрэв": "Физик, Хими, Дүрслэх урлаг, Газарзүй",
-    "Баасан": "Монгол хэл, Математик, Арга зүй, Спортын секц"
+    "Даваа 🌟": "Математик, Физик, Монгол хэл, Англи хэл, Биологи",
+    "Мягмар ⚡": "Хими, Түүх, Нийгэм, Биеийн тамир, Геометр",
+    "Лхагва 🚀": "Англи хэл, Математик, Мэдээлэл зүй, Уран зохиол",
+    "Пүрэв 🎨": "Физик, Хими, Дүрслэх урлаг, Газарзүй",
+    "Баасан 💖": "Монгол хэл, Математик, Арга зүй, Спортын секц"
   });
 
   const [duty, setDuty] = useState<Record<string, string>>({
-    "Даваа": "Болд, Сүрэн",
-    "Мягмар": "Ананд, Номин",
-    "Лхагва": "Бат, Туяа",
-    "Пүрэв": "Дорж, Цэцэг",
-    "Баасан": "Тэмүүлэн, Хулан"
+    "Даваа 🌟": "Болд, Сүрэн",
+    "Мягмар ⚡": "Ананд, Номин",
+    "Лхагва 🚀": "Бат, Туяа",
+    "Пүрэв 🎨": "Дорж, Цэцэг",
+    "Баасан 💖": "Тэмүүлэн, Хулан"
   });
 
   const [feedbacks, setFeedbacks] = useState<FeedbackItem[]>([
-    { id: 1, author: "Сурагч", text: "Аялалын цагийг наашлуулах боломжтой юу?", date: "2026-09-07" }
+    { id: 1, author: "Сурагч", text: "Ангийн аялалын цагийг наашлуулах боломжтой юу? 😊", date: "2026-09-07" },
+    { id: 2, author: "Эцэг эх", text: "Ангийн цахим систем маш гоё болсон байна, баярлалаа! ❤️", date: "2026-09-07" }
   ]);
 
-  // Input states for creation
+  // Input states
   const [newPostTitle, setNewPostTitle] = useState("");
   const [newPostText, setNewPostText] = useState("");
   const [newPostImg, setNewPostImg] = useState("");
   const [commentInput, setCommentInput] = useState<{ [key: number]: string }>({});
   const [newRule, setNewRule] = useState("");
   const [feedbackInput, setFeedbackInput] = useState("");
+
+  // Handle local image file upload
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setNewPostImg(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  // Export Feedback data to Excel / CSV format with Mongolian character support
+  const exportToExcel = () => {
+    if (feedbacks.length === 0) {
+      alert("Татах санал хүсэлт одоогоор байхгүй байна! ❤️");
+      return;
+    }
+    let csvContent = "\uFEFFОгноо,Илгээгч,Санал хүсэлт\n";
+    feedbacks.forEach((item) => {
+      const cleanText = `"${item.text.replace(/"/g, '""')}"`;
+      csvContent += `${item.date},${item.author},${cleanText}\n`;
+    });
+
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", `10V_Ангийн_Санал_Хүсэлт_${new Date().toISOString().split("T")[0]}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   // Login handler
   const handleLogin = () => {
@@ -114,11 +151,10 @@ export default function Home() {
       setShowLoginModal(false);
       setPinInput("");
     } else {
-      alert("Нууц код буруу байна!");
+      alert("Нууц код буруу байна! ❤️");
     }
   };
 
-  // Generic comment adder
   const addComment = (
     list: PostItem[],
     setList: React.Dispatch<React.SetStateAction<PostItem[]>>,
@@ -128,128 +164,149 @@ export default function Home() {
     if (!text) return;
     setList(list.map(p => p.id === postId ? {
       ...p,
-      comments: [...p.comments, { author: role === "teacher" ? "Багш" : "Сурагч/Эцэг эх", text }]
+      comments: [...p.comments, { author: role === "teacher" ? "Багш 👑" : "Сурагч/Эцэг эх ❤️", text }]
     } : p));
     setCommentInput({ ...commentInput, [postId]: "" });
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 font-sans">
-      {/* Header Banner */}
-      <header className="bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-700 text-white shadow-lg">
-        <div className="max-w-6xl mx-auto px-4 py-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="flex items-center space-x-4">
-              <div className="p-3 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-inner">
-                <School className="w-12 h-12 text-yellow-300 animate-bounce" />
-              </div>
-              <div>
-                <div className="inline-flex items-center space-x-2 bg-yellow-400/20 text-yellow-200 px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm mb-1 border border-yellow-300/30">
-                  <Sparkles className="w-3.5 h-3.5" />
-                  <span>Албан ёсны цахим систем</span>
-                </div>
-                <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight">
-                  Хөвсгөл аймгийн Эрдмийн далай сургууль
-                </h1>
-                <p className="text-blue-100 text-sm mt-1 font-medium">
-                  10В Анги • Багш: С.Хишигбаяр • Ахлагч: О.Мандахнаран (37 сурагч)
-                </p>
-              </div>
-            </div>
+    <div className="min-h-screen bg-slate-900 text-slate-100 font-sans relative overflow-x-hidden">
+      
+      {/* Dynamic Animated Background (Stars, Moon, Books, Hearts) */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-30">
+        <Moon className="absolute top-10 left-10 w-16 h-16 text-yellow-200 animate-pulse" />
+        <Star className="absolute top-24 right-20 w-8 h-8 text-yellow-300 animate-bounce" />
+        <Star className="absolute top-1/3 left-1/4 w-6 h-6 text-pink-300 animate-ping" />
+        <Heart className="absolute top-1/2 right-12 w-10 h-10 text-rose-400 animate-pulse" />
+        <BookOpen className="absolute bottom-20 left-16 w-12 h-12 text-indigo-300 animate-bounce" />
+        <Sparkles className="absolute bottom-1/3 right-1/4 w-10 h-10 text-amber-300 animate-pulse" />
+        <Star className="absolute bottom-10 right-10 w-8 h-8 text-cyan-300 animate-spin" />
+      </div>
 
-            {/* Login Status */}
-            <div>
-              {role === "guest" ? (
-                <button
-                  onClick={() => setShowLoginModal(true)}
-                  className="flex items-center space-x-2 bg-white text-blue-700 font-bold px-5 py-2.5 rounded-xl shadow-md hover:bg-blue-50 transition transform hover:-translate-y-0.5"
-                >
-                  <Lock className="w-4 h-4" />
-                  <span>Нэвтрэх</span>
-                </button>
-              ) : (
-                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-4 py-2 rounded-xl border border-white/20">
-                  <ShieldCheck className="w-5 h-5 text-green-300" />
-                  <span className="font-semibold text-sm">
-                    {role === "teacher" ? "Багшийн эрх" : "Ахлагчийн эрх"}
-                  </span>
-                  <button
-                    onClick={() => setRole("guest")}
-                    className="p-1 hover:bg-white/20 rounded-lg text-red-200 transition"
-                    title="Гарах"
-                  >
-                    <LogOut className="w-4 h-4" />
-                  </button>
+      {/* Main Container */}
+      <div className="relative z-10">
+
+        {/* Colorful Header Banner */}
+        <header className="bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 text-white shadow-2xl border-b border-white/10">
+          <div className="max-w-6xl mx-auto px-4 py-8">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+              
+              <div className="flex items-center space-x-5">
+                <div className="p-4 bg-white/20 backdrop-blur-md rounded-3xl border border-white/30 shadow-lg transform hover:scale-105 transition duration-300">
+                  <School className="w-12 h-12 text-yellow-300 animate-bounce" />
                 </div>
-              )}
+                <div>
+                  <div className="inline-flex items-center space-x-2 bg-yellow-400/20 text-yellow-200 px-3 py-1 rounded-full text-xs font-bold backdrop-blur-sm mb-2 border border-yellow-300/40">
+                    <Sparkles className="w-4 h-4 text-yellow-300" />
+                    <span>Албан ёсны цахим орон зай ❤️</span>
+                  </div>
+                  <h1 className="text-2xl md:text-4xl font-extrabold tracking-wide drop-shadow-md">
+                    Хөвсгөл аймаг • Эрдмийн далай сургууль
+                  </h1>
+                  <p className="text-pink-100 text-sm mt-1 font-semibold flex items-center gap-2">
+                    <span>🎒 10В Анги</span> • <span>👑 Багш: С.Хишигбаяр</span> • <span>⭐ Ахлагч: О.Мандахнаран (37 сурагч)</span>
+                  </p>
+                </div>
+              </div>
+
+              {/* Login Button */}
+              <div>
+                {role === "guest" ? (
+                  <button
+                    onClick={() => setShowLoginModal(true)}
+                    className="flex items-center space-x-2 bg-gradient-to-r from-yellow-400 to-amber-500 text-slate-900 font-extrabold px-6 py-3 rounded-2xl shadow-xl hover:opacity-95 transition transform hover:-translate-y-1"
+                  >
+                    <Lock className="w-4 h-4" />
+                    <span>Нэвтрэх 🔑</span>
+                  </button>
+                ) : (
+                  <div className="flex items-center space-x-3 bg-white/20 backdrop-blur-md px-5 py-2.5 rounded-2xl border border-white/30 shadow-lg">
+                    <ShieldCheck className="w-5 h-5 text-green-300 animate-pulse" />
+                    <span className="font-bold text-sm">
+                      {role === "teacher" ? "Багшийн эрх 👑" : "Ахлагчийн эрх ⭐"}
+                    </span>
+                    <button
+                      onClick={() => setRole("guest")}
+                      className="p-1.5 hover:bg-white/20 rounded-xl text-red-200 transition"
+                      title="Гарах"
+                    >
+                      <LogOut className="w-4 h-4" />
+                    </button>
+                  </div>
+                )}
+              </div>
+
             </div>
           </div>
-        </div>
-      </header>
+        </header>
 
-      {/* Navigation Tabs */}
-      <nav className="bg-white border-b border-slate-200 sticky top-0 z-10 shadow-sm">
-        <div className="max-w-6xl mx-auto px-4 flex space-x-1 overflow-x-auto py-2 scrollbar-none">
-          {[
-            { id: "news", label: "Мэдээлэл", icon: FileText },
-            { id: "rules", label: "Ангийн дүрэм", icon: BookOpen },
-            { id: "schedule", label: "Хичээлийн хуваарь", icon: Calendar },
-            { id: "duty", label: "Жижүүрийн хуваарь", icon: CheckSquare },
-            { id: "achievements", label: "Амжилт бахархал", icon: Trophy },
-            { id: "reports", label: "Тайлан", icon: Star },
-            { id: "feedback", label: "Санал хүсэлт", icon: MessageSquare },
-          ].map((tab) => {
-            const Icon = tab.icon;
-            const active = activeTab === tab.id;
-            return (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center space-x-2 px-4 py-2.5 rounded-xl font-medium text-sm whitespace-nowrap transition ${
-                  active
-                    ? "bg-blue-600 text-white shadow-sm"
-                    : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
-                }`}
-              >
-                <Icon className="w-4 h-4" />
-                <span>{tab.label}</span>
-              </button>
-            );
-          })}
-        </div>
-      </nav>
+        {/* Colorful Interactive Navigation Tabs */}
+        <nav className="bg-slate-800/80 backdrop-blur-lg border-b border-slate-700 sticky top-0 z-20 shadow-md">
+          <div className="max-w-6xl mx-auto px-4 flex space-x-2 overflow-x-auto py-3 scrollbar-none">
+            {[
+              { id: "news", label: "Мэдээлэл ❤️", icon: FileText, color: "from-blue-500 to-indigo-600" },
+              { id: "rules", label: "Ангийн дүрэм 📚", icon: BookOpen, color: "from-emerald-500 to-teal-600" },
+              { id: "schedule", label: "Хичээлийн хуваарь 🗓️", icon: Calendar, color: "from-amber-500 to-orange-600" },
+              { id: "duty", label: "Жижүүрийн хуваарь 🧹", icon: CheckSquare, color: "from-purple-500 to-pink-600" },
+              { id: "achievements", label: "Амжилт бахархал 🏆", icon: Trophy, color: "from-yellow-400 to-amber-500" },
+              { id: "reports", label: "Тайлан мэдээ 📊", icon: Star, color: "from-rose-500 to-red-600" },
+              { id: "feedback", label: "Санал хүсэлт 💬", icon: MessageSquare, color: "from-cyan-500 to-blue-600" },
+            ].map((tab) => {
+              const Icon = tab.icon;
+              const active = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`flex items-center space-x-2 px-5 py-2.5 rounded-2xl font-bold text-sm whitespace-nowrap transition-all duration-300 transform hover:scale-105 ${
+                    active
+                      ? `bg-gradient-to-r ${tab.color} text-white shadow-lg ring-2 ring-white/40`
+                      : "bg-slate-700/50 text-slate-300 hover:bg-slate-700 hover:text-white"
+                  }`}
+                >
+                  <Icon className="w-4 h-4" />
+                  <span>{tab.label}</span>
+                </button>
+              );
+            })}
+          </div>
+        </nav>
 
-      {/* Main Content Area */}
-      <main className="max-w-6xl mx-auto px-4 py-8">
-        {/* TAB 1: МЭДЭЭЛЭЛ */}
-        {activeTab === "news" && (
-          <div className="space-y-6">
-            {role === "teacher" && (
-              <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-                <h3 className="font-bold text-lg mb-4 flex items-center gap-2 text-blue-700">
-                  <Plus className="w-5 h-5" /> Шинэ мэдээлэл нийтлэх
-                </h3>
-                <div className="space-y-3">
+        {/* Main Content Area */}
+        <main className="max-w-6xl mx-auto px-4 py-8">
+
+          {/* TAB 1: МЭДЭЭЛЭЛ */}
+          {activeTab === "news" && (
+            <div className="space-y-6">
+              {role === "teacher" && (
+                <div className="bg-slate-800/90 backdrop-blur-md p-6 rounded-3xl shadow-xl border border-blue-500/30 space-y-4">
+                  <h3 className="font-extrabold text-lg flex items-center gap-2 text-blue-400">
+                    <Plus className="w-5 h-5" /> Шинэ мэдээлэл нийтлэх ✨
+                  </h3>
                   <input
                     type="text"
-                    placeholder="Гарчиг..."
+                    placeholder="Мэдээний гарчиг бичих..."
                     value={newPostTitle}
                     onChange={(e) => setNewPostTitle(e.target.value)}
-                    className="w-full p-3 border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none"
+                    className="w-full p-3 bg-slate-900 border border-slate-700 rounded-2xl text-white outline-none focus:border-blue-500"
                   />
                   <textarea
-                    placeholder="Мэдээллийн агуулга..."
+                    placeholder="Мэдээллийн агуулга, дэлгэрэнгүй..."
                     value={newPostText}
                     onChange={(e) => setNewPostText(e.target.value)}
-                    className="w-full p-3 border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none h-24"
+                    className="w-full p-3 bg-slate-900 border border-slate-700 rounded-2xl text-white outline-none focus:border-blue-500 h-24"
                   />
-                  <input
-                    type="text"
-                    placeholder="Зургийн холбоос (URL)..."
-                    value={newPostImg}
-                    onChange={(e) => setNewPostImg(e.target.value)}
-                    className="w-full p-3 border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none"
-                  />
+                  
+                  {/* Local Image Upload Option */}
+                  <div className="flex items-center gap-4">
+                    <label className="flex items-center gap-2 bg-slate-700 hover:bg-slate-600 text-white font-bold px-4 py-2.5 rounded-2xl cursor-pointer transition">
+                      <Upload className="w-4 h-4 text-blue-400" />
+                      <span>Компьютер / Утаснаас зураг сонгох</span>
+                      <input type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
+                    </label>
+                    {newPostImg && <span className="text-xs text-green-400 font-bold">Зураг сонгогдлоо! ✅</span>}
+                  </div>
+
                   <button
                     onClick={() => {
                       if (!newPostTitle) return;
@@ -267,403 +324,432 @@ export default function Home() {
                       ]);
                       setNewPostTitle(""); setNewPostText(""); setNewPostImg("");
                     }}
-                    className="bg-blue-600 text-white font-semibold px-6 py-2.5 rounded-xl hover:bg-blue-700 transition"
+                    className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-extrabold px-8 py-3 rounded-2xl shadow-lg hover:opacity-95 transition transform hover:scale-105"
                   >
-                    Нийтлэх
+                    Нийтлэх 🚀
                   </button>
                 </div>
-              </div>
-            )}
+              )}
 
-            {posts.map((post) => (
-              <div key={post.id} className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
-                {post.image && (
-                  <img src={post.image} alt="" className="w-full h-64 object-cover" />
-                )}
-                <div className="p-6">
-                  <div className="text-xs text-blue-600 font-semibold mb-1">{post.date}</div>
-                  <h3 className="font-bold text-xl mb-2">{post.title}</h3>
-                  <p className="text-slate-600 mb-6 leading-relaxed">{post.text}</p>
+              {posts.map((post) => (
+                <div key={post.id} className="bg-slate-800/80 backdrop-blur-md rounded-3xl shadow-xl border border-slate-700 overflow-hidden transform hover:-translate-y-1 transition duration-300">
+                  {post.image && (
+                    <img src={post.image} alt="" className="w-full h-72 object-cover" />
+                  )}
+                  <div className="p-6">
+                    <div className="text-xs text-blue-400 font-bold mb-1 flex items-center gap-1">
+                      <Calendar className="w-3.5 h-3.5" /> {post.date}
+                    </div>
+                    <h3 className="font-extrabold text-2xl mb-3 text-white">{post.title}</h3>
+                    <p className="text-slate-300 mb-6 leading-relaxed text-base">{post.text}</p>
 
-                  {/* Comments Section */}
-                  <div className="border-t pt-4 bg-slate-50 -mx-6 -mb-6 p-6 space-y-4">
-                    <h4 className="font-bold text-sm text-slate-700">Сэтгэгдэл, санал:</h4>
-                    {post.comments.map((c, i) => (
-                      <div key={i} className="bg-white p-3 rounded-xl border text-sm">
-                        <span className="font-bold text-blue-600">{c.author}: </span>
-                        <span className="text-slate-700">{c.text}</span>
+                    {/* Comments */}
+                    <div className="border-t border-slate-700/60 pt-4 bg-slate-900/60 -mx-6 -mb-6 p-6 space-y-4">
+                      <h4 className="font-bold text-sm text-pink-400 flex items-center gap-1">
+                        <Smile className="w-4 h-4" /> Сэтгэгдэл, санал бодол:
+                      </h4>
+                      {post.comments.map((c, i) => (
+                        <div key={i} className="bg-slate-800 p-3 rounded-2xl border border-slate-700 text-sm">
+                          <span className="font-bold text-blue-400">{c.author}: </span>
+                          <span className="text-slate-200">{c.text}</span>
+                        </div>
+                      ))}
+
+                      <div className="flex gap-2">
+                        <input
+                          type="text"
+                          placeholder="Сэтгэгдэл үлдээх... ❤️"
+                          value={commentInput[post.id] || ""}
+                          onChange={(e) => setCommentInput({ ...commentInput, [post.id]: e.target.value })}
+                          className="flex-1 p-3 bg-slate-800 border border-slate-700 rounded-2xl text-sm outline-none focus:border-blue-500 text-white"
+                        />
+                        <button
+                          onClick={() => addComment(posts, setPosts, post.id)}
+                          className="bg-blue-600 text-white px-5 py-3 rounded-2xl hover:bg-blue-500 transition flex items-center"
+                        >
+                          <Send className="w-4 h-4" />
+                        </button>
                       </div>
-                    ))}
-
-                    <div className="flex gap-2">
-                      <input
-                        type="text"
-                        placeholder="Сэтгэгдэл үлдээх..."
-                        value={commentInput[post.id] || ""}
-                        onChange={(e) => setCommentInput({ ...commentInput, [post.id]: e.target.value })}
-                        className="flex-1 p-2.5 border rounded-xl text-sm outline-none bg-white"
-                      />
-                      <button
-                        onClick={() => addComment(posts, setPosts, post.id)}
-                        className="bg-blue-600 text-white px-4 py-2.5 rounded-xl hover:bg-blue-700 transition flex items-center"
-                      >
-                        <Send className="w-4 h-4" />
-                      </button>
                     </div>
                   </div>
                 </div>
+              ))}
+            </div>
+          )}
+
+          {/* TAB 2: АНГИЙН ДҮРЭМ */}
+          {activeTab === "rules" && (
+            <div className="bg-slate-800/90 backdrop-blur-md p-8 rounded-3xl shadow-xl border border-emerald-500/30 space-y-6">
+              <h3 className="font-extrabold text-2xl text-emerald-400 flex items-center gap-2">
+                <BookOpen className="w-7 h-7 text-emerald-400" /> 10В Ангийн Дүрэм Ба Журам 📚
+              </h3>
+
+              {(role === "teacher" || role === "leader") && (
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    placeholder="Шинэ дүрэм нэмэх..."
+                    value={newRule}
+                    onChange={(e) => setNewRule(e.target.value)}
+                    className="flex-1 p-3 bg-slate-900 border border-slate-700 rounded-2xl outline-none focus:border-emerald-500 text-white"
+                  />
+                  <button
+                    onClick={() => {
+                      if (!newRule) return;
+                      setRules([...rules, newRule]);
+                      setNewRule("");
+                    }}
+                    className="bg-emerald-600 text-white font-extrabold px-6 py-3 rounded-2xl hover:bg-emerald-500 transition"
+                  >
+                    Нэмэх ✨
+                  </button>
+                </div>
+              )}
+
+              <div className="grid gap-4">
+                {rules.map((rule, idx) => (
+                  <div key={idx} className="flex items-center space-x-4 p-4 bg-slate-900/80 rounded-2xl border border-slate-700/80 hover:border-emerald-500/50 transition">
+                    <span className="w-9 h-9 bg-emerald-500/20 text-emerald-300 font-extrabold rounded-xl flex items-center justify-center text-base border border-emerald-500/30">
+                      {idx + 1}
+                    </span>
+                    <span className="font-bold text-slate-200 text-base">{rule}</span>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        )}
+            </div>
+          )}
 
-        {/* TAB 2: АНГИЙН ДҮРЭМ */}
-        {activeTab === "rules" && (
-          <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-6">
-            <h3 className="font-bold text-xl text-slate-800 flex items-center gap-2">
-              <BookOpen className="w-6 h-6 text-blue-600" /> 10В Ангийн Дүрэм
-            </h3>
+          {/* TAB 3: ХИЧЭЭЛИЙН ХУВААРЬ */}
+          {activeTab === "schedule" && (
+            <div className="bg-slate-800/90 backdrop-blur-md p-8 rounded-3xl shadow-xl border border-amber-500/30 space-y-6">
+              <h3 className="font-extrabold text-2xl text-amber-400 flex items-center gap-2">
+                <Calendar className="w-7 h-7" /> Хичээлийн Хуваарь 🗓️
+              </h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                {Object.entries(schedule).map(([day, list]) => (
+                  <div key={day} className="p-5 bg-slate-900/80 rounded-2xl border border-slate-700">
+                    <h4 className="font-extrabold text-amber-300 mb-2 text-lg">{day}</h4>
+                    {role === "teacher" || role === "leader" ? (
+                      <input
+                        type="text"
+                        value={list}
+                        onChange={(e) => setSchedule({ ...schedule, [day]: e.target.value })}
+                        className="w-full p-2.5 bg-slate-800 border border-slate-700 rounded-xl text-white text-sm"
+                      />
+                    ) : (
+                      <p className="text-slate-200 font-semibold text-base">{list}</p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
-            {(role === "teacher" || role === "leader") && (
-              <div className="flex gap-2">
-                <input
-                  type="text"
-                  placeholder="Шинэ дүрэм нэмэх..."
-                  value={newRule}
-                  onChange={(e) => setNewRule(e.target.value)}
-                  className="flex-1 p-3 border rounded-xl outline-none"
-                />
+          {/* TAB 4: ЖИЖҮҮРИЙН ХУВААРЬ */}
+          {activeTab === "duty" && (
+            <div className="bg-slate-800/90 backdrop-blur-md p-8 rounded-3xl shadow-xl border border-purple-500/30 space-y-6">
+              <h3 className="font-extrabold text-2xl text-purple-400 flex items-center gap-2">
+                <CheckSquare className="w-7 h-7" /> Жижүүрийн Хуваарь 🧹
+              </h3>
+              <div className="grid md:grid-cols-3 gap-4">
+                {Object.entries(duty).map(([day, names]) => (
+                  <div key={day} className="p-5 bg-slate-900/80 rounded-2xl border border-slate-700">
+                    <h4 className="font-extrabold text-purple-300 mb-2 text-lg">{day}</h4>
+                    {role === "teacher" || role === "leader" ? (
+                      <input
+                        type="text"
+                        value={names}
+                        onChange={(e) => setDuty({ ...duty, [day]: e.target.value })}
+                        className="w-full p-2.5 bg-slate-800 border border-slate-700 rounded-xl text-white text-sm"
+                      />
+                    ) : (
+                      <p className="text-slate-100 font-bold text-base">{names}</p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* TAB 5: АМЖИЛТ БАХАРХАЛ */}
+          {activeTab === "achievements" && (
+            <div className="space-y-6">
+              {role === "teacher" && (
+                <div className="bg-slate-800/90 backdrop-blur-md p-6 rounded-3xl shadow-xl border border-amber-500/30 space-y-4">
+                  <h3 className="font-extrabold text-lg text-amber-400 flex items-center gap-2">
+                    <Trophy className="w-5 h-5" /> Шинэ бахархал, амжилт нэмэх 🏆
+                  </h3>
+                  <input
+                    type="text"
+                    placeholder="Амжилтын гарчиг..."
+                    value={newPostTitle}
+                    onChange={(e) => setNewPostTitle(e.target.value)}
+                    className="w-full p-3 bg-slate-900 border border-slate-700 rounded-2xl text-white outline-none"
+                  />
+                  <textarea
+                    placeholder="Дэлгэрэнгүй тайлбар..."
+                    value={newPostText}
+                    onChange={(e) => setNewPostText(e.target.value)}
+                    className="w-full p-3 bg-slate-900 border border-slate-700 rounded-2xl text-white outline-none h-20"
+                  />
+                  <div className="flex items-center gap-4">
+                    <label className="flex items-center gap-2 bg-slate-700 hover:bg-slate-600 text-white font-bold px-4 py-2.5 rounded-2xl cursor-pointer transition">
+                      <Upload className="w-4 h-4 text-amber-400" />
+                      <span>Зураг оруулах</span>
+                      <input type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
+                    </label>
+                    {newPostImg && <span className="text-xs text-green-400 font-bold">Зураг сонгогдлоо! ✅</span>}
+                  </div>
+                  <button
+                    onClick={() => {
+                      if (!newPostTitle) return;
+                      setAchievements([
+                        {
+                          id: Date.now(),
+                          title: newPostTitle,
+                          text: newPostText,
+                          image: newPostImg,
+                          date: new Date().toISOString().split("T")[0],
+                          comments: []
+                        },
+                        ...achievements
+                      ]);
+                      setNewPostTitle(""); setNewPostText(""); setNewPostImg("");
+                    }}
+                    className="bg-gradient-to-r from-yellow-400 to-amber-500 text-slate-900 font-extrabold px-8 py-3 rounded-2xl shadow-lg hover:opacity-95 transition"
+                  >
+                    Нэмэх 🎉
+                  </button>
+                </div>
+              )}
+
+              {achievements.map((item) => (
+                <div key={item.id} className="bg-slate-800/80 backdrop-blur-md rounded-3xl shadow-xl border border-slate-700 overflow-hidden">
+                  {item.image && <img src={item.image} alt="" className="w-full h-72 object-cover" />}
+                  <div className="p-6">
+                    <div className="text-xs text-amber-400 font-bold mb-1">{item.date}</div>
+                    <h3 className="font-extrabold text-2xl mb-2 text-white">{item.title}</h3>
+                    <p className="text-slate-300 mb-6">{item.text}</p>
+
+                    <div className="border-t border-slate-700 pt-4 bg-slate-900/60 -mx-6 -mb-6 p-6 space-y-4">
+                      <h4 className="font-bold text-sm text-amber-300">Баяр хүргэх сэтгэгдэл ❤️:</h4>
+                      {item.comments.map((c, i) => (
+                        <div key={i} className="bg-slate-800 p-3 rounded-2xl border border-slate-700 text-sm">
+                          <span className="font-bold text-amber-400">{c.author}: </span>
+                          <span className="text-slate-200">{c.text}</span>
+                        </div>
+                      ))}
+                      <div className="flex gap-2">
+                        <input
+                          type="text"
+                          placeholder="Баяр хүргэх сэтгэгдэл үлдээх..."
+                          value={commentInput[item.id] || ""}
+                          onChange={(e) => setCommentInput({ ...commentInput, [item.id]: e.target.value })}
+                          className="flex-1 p-3 bg-slate-800 border border-slate-700 rounded-2xl text-sm outline-none text-white"
+                        />
+                        <button
+                          onClick={() => addComment(achievements, setAchievements, item.id)}
+                          className="bg-amber-500 text-slate-900 font-bold px-5 py-3 rounded-2xl hover:bg-amber-400 transition"
+                        >
+                          <Send className="w-4 h-4" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* TAB 6: ТАЙЛАН */}
+          {activeTab === "reports" && (
+            <div className="space-y-6">
+              {role === "teacher" && (
+                <div className="bg-slate-800/90 backdrop-blur-md p-6 rounded-3xl shadow-xl border border-rose-500/30 space-y-4">
+                  <h3 className="font-extrabold text-lg text-rose-400 flex items-center gap-2">
+                    <Star className="w-5 h-5" /> Шинэ тайлан мэдээ оруулах 📊
+                  </h3>
+                  <input
+                    type="text"
+                    placeholder="Тайлангийн нэр..."
+                    value={newPostTitle}
+                    onChange={(e) => setNewPostTitle(e.target.value)}
+                    className="w-full p-3 bg-slate-900 border border-slate-700 rounded-2xl text-white outline-none"
+                  />
+                  <textarea
+                    placeholder="Дэлгэрэнгүй тайлан..."
+                    value={newPostText}
+                    onChange={(e) => setNewPostText(e.target.value)}
+                    className="w-full p-3 bg-slate-900 border border-slate-700 rounded-2xl text-white outline-none h-20"
+                  />
+                  <div className="flex items-center gap-4">
+                    <label className="flex items-center gap-2 bg-slate-700 hover:bg-slate-600 text-white font-bold px-4 py-2.5 rounded-2xl cursor-pointer transition">
+                      <Upload className="w-4 h-4 text-rose-400" />
+                      <span>Зураг оруулах</span>
+                      <input type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
+                    </label>
+                    {newPostImg && <span className="text-xs text-green-400 font-bold">Зураг сонгогдлоо! ✅</span>}
+                  </div>
+                  <button
+                    onClick={() => {
+                      if (!newPostTitle) return;
+                      setReports([
+                        {
+                          id: Date.now(),
+                          title: newPostTitle,
+                          text: newPostText,
+                          image: newPostImg,
+                          date: new Date().toISOString().split("T")[0],
+                          comments: []
+                        },
+                        ...reports
+                      ]);
+                      setNewPostTitle(""); setNewPostText(""); setNewPostImg("");
+                    }}
+                    className="bg-gradient-to-r from-rose-500 to-red-600 text-white font-extrabold px-8 py-3 rounded-2xl shadow-lg hover:opacity-95 transition"
+                  >
+                    Оруулах 📊
+                  </button>
+                </div>
+              )}
+
+              {reports.map((item) => (
+                <div key={item.id} className="bg-slate-800/80 backdrop-blur-md rounded-3xl shadow-xl border border-slate-700 overflow-hidden">
+                  {item.image && <img src={item.image} alt="" className="w-full h-72 object-cover" />}
+                  <div className="p-6">
+                    <div className="text-xs text-rose-400 font-bold mb-1">{item.date}</div>
+                    <h3 className="font-extrabold text-2xl mb-2 text-white">{item.title}</h3>
+                    <p className="text-slate-300 mb-6">{item.text}</p>
+
+                    <div className="border-t border-slate-700 pt-4 bg-slate-900/60 -mx-6 -mb-6 p-6 space-y-4">
+                      <h4 className="font-bold text-sm text-rose-300">Сэтгэгдэл:</h4>
+                      {item.comments.map((c, i) => (
+                        <div key={i} className="bg-slate-800 p-3 rounded-2xl border border-slate-700 text-sm">
+                          <span className="font-bold text-rose-400">{c.author}: </span>
+                          <span className="text-slate-200">{c.text}</span>
+                        </div>
+                      ))}
+                      <div className="flex gap-2">
+                        <input
+                          type="text"
+                          placeholder="Сэтгэгдэл бичих..."
+                          value={commentInput[item.id] || ""}
+                          onChange={(e) => setCommentInput({ ...commentInput, [item.id]: e.target.value })}
+                          className="flex-1 p-3 bg-slate-800 border border-slate-700 rounded-2xl text-sm outline-none text-white"
+                        />
+                        <button
+                          onClick={() => addComment(reports, setReports, item.id)}
+                          className="bg-rose-600 text-white font-bold px-5 py-3 rounded-2xl hover:bg-rose-500 transition"
+                        >
+                          <Send className="w-4 h-4" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* TAB 7: САНАЛ ХҮСЭЛТ БА ЭКСЕЛ ТАТАХ */}
+          {activeTab === "feedback" && (
+            <div className="bg-slate-800/90 backdrop-blur-md p-8 rounded-3xl shadow-xl border border-cyan-500/30 space-y-6">
+              
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <h3 className="font-extrabold text-2xl text-cyan-400 flex items-center gap-2">
+                  <MessageSquare className="w-7 h-7" /> Санал Хүсэлтийн Цонх 💬
+                </h3>
+
+                {/* Excel Download Button */}
                 <button
-                  onClick={() => {
-                    if (!newRule) return;
-                    setRules([...rules, newRule]);
-                    setNewRule("");
-                  }}
-                  className="bg-blue-600 text-white font-semibold px-6 py-3 rounded-xl hover:bg-blue-700 transition"
+                  onClick={exportToExcel}
+                  className="flex items-center space-x-2 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-extrabold px-5 py-3 rounded-2xl shadow-lg hover:opacity-95 transition transform hover:scale-105"
                 >
-                  Нэмэх
+                  <Download className="w-5 h-5" />
+                  <span>Экселээр Татах (Excel/CSV) 📊</span>
                 </button>
               </div>
-            )}
 
-            <ul className="space-y-3">
-              {rules.map((rule, idx) => (
-                <li key={idx} className="flex items-center space-x-3 p-4 bg-slate-50 rounded-xl border border-slate-100">
-                  <span className="w-7 h-7 bg-blue-100 text-blue-700 font-bold rounded-full flex items-center justify-center text-sm">
-                    {idx + 1}
-                  </span>
-                  <span className="font-medium text-slate-700">{rule}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {/* TAB 3: ХИЧЭЭЛИЙН ХУВААРЬ */}
-        {activeTab === "schedule" && (
-          <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-6">
-            <h3 className="font-bold text-xl text-slate-800">Хичээлийн хуваарь</h3>
-            <div className="grid md:grid-cols-2 gap-4">
-              {Object.entries(schedule).map(([day, list]) => (
-                <div key={day} className="p-4 bg-slate-50 rounded-xl border">
-                  <h4 className="font-bold text-blue-700 mb-2">{day}</h4>
-                  {role === "teacher" || role === "leader" ? (
-                    <input
-                      type="text"
-                      value={list}
-                      onChange={(e) => setSchedule({ ...schedule, [day]: e.target.value })}
-                      className="w-full p-2 border rounded-lg bg-white text-sm"
-                    />
-                  ) : (
-                    <p className="text-slate-700 text-sm font-medium">{list}</p>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* TAB 4: ЖИЖҮҮРИЙН ХУВААРЬ */}
-        {activeTab === "duty" && (
-          <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-6">
-            <h3 className="font-bold text-xl text-slate-800">Жижүүрийн хуваарь</h3>
-            <div className="grid md:grid-cols-3 gap-4">
-              {Object.entries(duty).map(([day, names]) => (
-                <div key={day} className="p-4 bg-blue-50/50 rounded-xl border border-blue-100">
-                  <h4 className="font-bold text-blue-800 mb-2">{day}</h4>
-                  {role === "teacher" || role === "leader" ? (
-                    <input
-                      type="text"
-                      value={names}
-                      onChange={(e) => setDuty({ ...duty, [day]: e.target.value })}
-                      className="w-full p-2 border rounded-lg bg-white text-sm"
-                    />
-                  ) : (
-                    <p className="text-slate-700 font-semibold">{names}</p>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* TAB 5: АМЖИЛТ БАХАРХАЛ */}
-        {activeTab === "achievements" && (
-          <div className="space-y-6">
-            {role === "teacher" && (
-              <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-3">
-                <h3 className="font-bold text-lg text-amber-600 flex items-center gap-2">
-                  <Trophy className="w-5 h-5" /> Шинэ амжилт нэмэх
-                </h3>
+              <div className="flex gap-3">
                 <input
                   type="text"
-                  placeholder="Амжилтын нэр..."
-                  value={newPostTitle}
-                  onChange={(e) => setNewPostTitle(e.target.value)}
-                  className="w-full p-3 border rounded-xl outline-none"
-                />
-                <textarea
-                  placeholder="Тайлбар..."
-                  value={newPostText}
-                  onChange={(e) => setNewPostText(e.target.value)}
-                  className="w-full p-3 border rounded-xl outline-none h-20"
-                />
-                <input
-                  type="text"
-                  placeholder="Зургийн URL..."
-                  value={newPostImg}
-                  onChange={(e) => setNewPostImg(e.target.value)}
-                  className="w-full p-3 border rounded-xl outline-none"
+                  placeholder="Ангийн хамт олондоо санал хүсэлтээ үлдээгээрэй... ❤️"
+                  value={feedbackInput}
+                  onChange={(e) => setFeedbackInput(e.target.value)}
+                  className="flex-1 p-4 bg-slate-900 border border-slate-700 rounded-2xl outline-none focus:border-cyan-500 text-white"
                 />
                 <button
                   onClick={() => {
-                    if (!newPostTitle) return;
-                    setAchievements([
+                    if (!feedbackInput) return;
+                    setFeedbacks([
+                      ...feedbacks,
                       {
                         id: Date.now(),
-                        title: newPostTitle,
-                        text: newPostText,
-                        image: newPostImg,
-                        date: new Date().toISOString().split("T")[0],
-                        comments: []
-                      },
-                      ...achievements
+                        author: role === "teacher" ? "Багш 👑" : "Сурагч/Эцэг эх ❤️",
+                        text: feedbackInput,
+                        date: new Date().toISOString().split("T")[0]
+                      }
                     ]);
-                    setNewPostTitle(""); setNewPostText(""); setNewPostImg("");
+                    setFeedbackInput("");
                   }}
-                  className="bg-amber-500 text-white font-semibold px-6 py-2.5 rounded-xl hover:bg-amber-600 transition"
+                  className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-extrabold px-8 py-4 rounded-2xl shadow-lg hover:opacity-95 transition"
                 >
-                  Нэмэх
+                  Илгээх 🚀
                 </button>
               </div>
-            )}
 
-            {achievements.map((item) => (
-              <div key={item.id} className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
-                {item.image && <img src={item.image} alt="" className="w-full h-64 object-cover" />}
-                <div className="p-6">
-                  <div className="text-xs text-amber-600 font-semibold mb-1">{item.date}</div>
-                  <h3 className="font-bold text-xl mb-2">{item.title}</h3>
-                  <p className="text-slate-600 mb-6">{item.text}</p>
-
-                  <div className="border-t pt-4 bg-slate-50 -mx-6 -mb-6 p-6 space-y-4">
-                    <h4 className="font-bold text-sm text-slate-700">Баяр хүргэх, сэтгэгдэл:</h4>
-                    {item.comments.map((c, i) => (
-                      <div key={i} className="bg-white p-3 rounded-xl border text-sm">
-                        <span className="font-bold text-amber-600">{c.author}: </span>
-                        <span>{c.text}</span>
-                      </div>
-                    ))}
-                    <div className="flex gap-2">
-                      <input
-                        type="text"
-                        placeholder="Баяр хүргэх сэтгэгдэл..."
-                        value={commentInput[item.id] || ""}
-                        onChange={(e) => setCommentInput({ ...commentInput, [item.id]: e.target.value })}
-                        className="flex-1 p-2.5 border rounded-xl text-sm outline-none bg-white"
-                      />
-                      <button
-                        onClick={() => addComment(achievements, setAchievements, item.id)}
-                        className="bg-amber-500 text-white px-4 py-2.5 rounded-xl hover:bg-amber-600 transition"
-                      >
-                        <Send className="w-4 h-4" />
-                      </button>
+              <div className="space-y-4 pt-4 border-t border-slate-700">
+                <h4 className="font-bold text-slate-400 text-sm">Ирүүлсэн бүх санал хүсэлтүүд:</h4>
+                {feedbacks.map((f) => (
+                  <div key={f.id} className="p-4 bg-slate-900/80 rounded-2xl border border-slate-700/80">
+                    <div className="flex justify-between text-xs mb-1">
+                      <span className="font-extrabold text-cyan-300">{f.author}</span>
+                      <span className="text-slate-400">{f.date}</span>
                     </div>
+                    <p className="text-slate-200 font-medium text-base">{f.text}</p>
                   </div>
-                </div>
+                ))}
               </div>
-            ))}
-          </div>
-        )}
 
-        {/* TAB 6: ТАЙЛАН */}
-        {activeTab === "reports" && (
-          <div className="space-y-6">
-            {role === "teacher" && (
-              <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-3">
-                <h3 className="font-bold text-lg text-purple-700 flex items-center gap-2">
-                  <Star className="w-5 h-5" /> Шинэ тайлан оруулах
-                </h3>
-                <input
-                  type="text"
-                  placeholder="Тайлангийн нэр..."
-                  value={newPostTitle}
-                  onChange={(e) => setNewPostTitle(e.target.value)}
-                  className="w-full p-3 border rounded-xl outline-none"
-                />
-                <textarea
-                  placeholder="Дэлгэрэнгүй агуулга..."
-                  value={newPostText}
-                  onChange={(e) => setNewPostText(e.target.value)}
-                  className="w-full p-3 border rounded-xl outline-none h-20"
-                />
-                <input
-                  type="text"
-                  placeholder="Зургийн URL..."
-                  value={newPostImg}
-                  onChange={(e) => setNewPostImg(e.target.value)}
-                  className="w-full p-3 border rounded-xl outline-none"
-                />
-                <button
-                  onClick={() => {
-                    if (!newPostTitle) return;
-                    setReports([
-                      {
-                        id: Date.now(),
-                        title: newPostTitle,
-                        text: newPostText,
-                        image: newPostImg,
-                        date: new Date().toISOString().split("T")[0],
-                        comments: []
-                      },
-                      ...reports
-                    ]);
-                    setNewPostTitle(""); setNewPostText(""); setNewPostImg("");
-                  }}
-                  className="bg-purple-600 text-white font-semibold px-6 py-2.5 rounded-xl hover:bg-purple-700 transition"
-                >
-                  Нэмэх
-                </button>
-              </div>
-            )}
-
-            {reports.map((item) => (
-              <div key={item.id} className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
-                {item.image && <img src={item.image} alt="" className="w-full h-64 object-cover" />}
-                <div className="p-6">
-                  <div className="text-xs text-purple-600 font-semibold mb-1">{item.date}</div>
-                  <h3 className="font-bold text-xl mb-2">{item.title}</h3>
-                  <p className="text-slate-600 mb-6">{item.text}</p>
-
-                  <div className="border-t pt-4 bg-slate-50 -mx-6 -mb-6 p-6 space-y-4">
-                    <h4 className="font-bold text-sm text-slate-700">Сэтгэгдэл, санал:</h4>
-                    {item.comments.map((c, i) => (
-                      <div key={i} className="bg-white p-3 rounded-xl border text-sm">
-                        <span className="font-bold text-purple-600">{c.author}: </span>
-                        <span>{c.text}</span>
-                      </div>
-                    ))}
-                    <div className="flex gap-2">
-                      <input
-                        type="text"
-                        placeholder="Сэтгэгдэл бичих..."
-                        value={commentInput[item.id] || ""}
-                        onChange={(e) => setCommentInput({ ...commentInput, [item.id]: e.target.value })}
-                        className="flex-1 p-2.5 border rounded-xl text-sm outline-none bg-white"
-                      />
-                      <button
-                        onClick={() => addComment(reports, setReports, item.id)}
-                        className="bg-purple-600 text-white px-4 py-2.5 rounded-xl hover:bg-purple-700 transition"
-                      >
-                        <Send className="w-4 h-4" />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* TAB 7: САНАЛ ХҮСЭЛТ */}
-        {activeTab === "feedback" && (
-          <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-6">
-            <h3 className="font-bold text-xl text-slate-800">Санал хүсэлт үлдээх</h3>
-            <div className="flex gap-2">
-              <input
-                type="text"
-                placeholder="Санал, хүсэлтээ бичнэ үү..."
-                value={feedbackInput}
-                onChange={(e) => setFeedbackInput(e.target.value)}
-                className="flex-1 p-3 border rounded-xl outline-none"
-              />
-              <button
-                onClick={() => {
-                  if (!feedbackInput) return;
-                  setFeedbacks([
-                    ...feedbacks,
-                    {
-                      id: Date.now(),
-                      author: "Сурагч/Эцэг эх",
-                      text: feedbackInput,
-                      date: new Date().toISOString().split("T")[0]
-                    }
-                  ]);
-                  setFeedbackInput("");
-                }}
-                className="bg-blue-600 text-white font-semibold px-6 py-3 rounded-xl hover:bg-blue-700 transition"
-              >
-                Илгээх
-              </button>
             </div>
+          )}
 
-            <div className="space-y-3 pt-4 border-t">
-              {feedbacks.map((f) => (
-                <div key={f.id} className="p-4 bg-slate-50 rounded-xl border">
-                  <div className="flex justify-between text-xs text-slate-500 mb-1">
-                    <span className="font-bold text-slate-700">{f.author}</span>
-                    <span>{f.date}</span>
-                  </div>
-                  <p className="text-slate-700 text-sm">{f.text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-      </main>
+        </main>
+      </div>
 
       {/* LOGIN MODAL */}
       {showLoginModal && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl p-6 max-w-sm w-full shadow-2xl space-y-4">
-            <h3 className="font-bold text-xl text-center text-slate-800">Системд нэвтрэх</h3>
-            <p className="text-xs text-center text-slate-500">
-              Багш болон Ангийн ахлагчийн нууц кодоо оруулна уу
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-md flex items-center justify-center p-4 z-50">
+          <div className="bg-slate-800 rounded-3xl p-6 max-w-sm w-full shadow-2xl space-y-5 border border-slate-700">
+            <h3 className="font-extrabold text-2xl text-center text-white">Системд нэвтрэх 🔑</h3>
+            <p className="text-xs text-center text-slate-400">
+              Багш эсвэл Ангийн ахлагчийн PIN кодоо оруулна уу
             </p>
             <input
               type="password"
-              placeholder="PIN код..."
+              placeholder="****"
               value={pinInput}
               onChange={(e) => setPinInput(e.target.value)}
-              className="w-full p-3 border rounded-xl text-center text-lg tracking-widest outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-4 bg-slate-900 border border-slate-700 rounded-2xl text-center text-2xl tracking-widest outline-none focus:border-pink-500 text-white"
             />
-            <div className="flex gap-2">
+            <div className="flex gap-3">
               <button
                 onClick={() => setShowLoginModal(false)}
-                className="flex-1 py-2.5 border rounded-xl font-semibold hover:bg-slate-50"
+                className="flex-1 py-3 bg-slate-700 text-slate-300 font-bold rounded-2xl hover:bg-slate-600"
               >
                 Цуцлах
               </button>
               <button
                 onClick={handleLogin}
-                className="flex-1 py-2.5 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700"
+                className="flex-1 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-extrabold rounded-2xl hover:opacity-90"
               >
-                Нэвтрэх
+                Нэвтрэх ❤️
               </button>
             </div>
           </div>
         </div>
       )}
+
     </div>
   );
 }
