@@ -1,12 +1,12 @@
 "use client";
-import React, { useState } from "react";
+import { supabase } from './lib/supabase';
+import React, { useState, useEffect } from "react";
 import {
   Users, Calendar, CheckSquare, Trophy, FileText,
-  MessageSquare, Lock, LogOut, Plus, Star, Sparkles,
-  School, Send, Upload, Trash2, BookOpen, ShieldCheck,
-  Moon, Heart, Download, Smile
+  MessageSquare, Lock, LogOut, Download, Plus, Star,
+  Sparkles, School, Send, Upload, Trash2, BookOpen,
+  ShieldCheck, Moon, Heart, Smile
 } from "lucide-react";
-
 interface CommentItem {
   author: string;
   text: string;
